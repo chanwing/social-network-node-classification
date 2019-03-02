@@ -1,0 +1,18 @@
+# Homework
+
+## 任务描述
+
+* 对给定的reddit数据集进行node classification，预测数据集里reddit.label文件缺失的label（0-3999顶点）
+* 作业提交：按照reddit.label文件的格式，给出0-3999号顶点的预测label，保存为 学号.pred.label 文件并发送至xysmlx@pku.edu.cn
+
+## Dataset说明
+
+* 数据来源：根据reddit网站一个月的comment构造
+    * vertex：reddit的post
+    * edge：将同一个用户评论过的不同post两两连接
+    * label：post的subreddit（话题分类）
+* 数据说明：
+    * reddit.coo：数据集的边信息，COO空格分隔的三元组表示：(dest src val)，dest:destination vertex，src:sourse vertex，val:edge value
+    * reddit.feature：节点的feature：二元组表示(vertex id | feature(602维，以空格分隔))
+        * 602维解释：第1维是post的commnet数量，第2维是post的评分，第3-302维是title的word embedding的平均值，第303-602维是post comment的word embedding的平均值
+    * reddit.label：节点的label：二元组表示(vertex id | label(41维的向量表示，label[i]=1表示这个节点的label是i))
